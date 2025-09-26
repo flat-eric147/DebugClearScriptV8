@@ -1,0 +1,34 @@
+﻿<Window x:Class="TestClearScript.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestClearScript"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Start" Click="OnStart" Margin="2,0"/>
+            <Button Grid.Column="1" Content="Stop" Click="OnStop" Margin="2,0"/>
+            <Button Grid.Column="2" Content="DoSomething" Click="OnDoSomething" Margin="2,0"/>
+        </Grid>
+        <TextBox Grid.Row="1" x:Name="scriptCode"  xml:space="preserve">
+Global.DoSomething = function (a, b, c)
+{ 
+    testCL.WriteLog(a+b+c) 
+}
+        </TextBox>
+        <TextBlock Grid.Row="2" Text="{Binding LogText}" Background="LightGray"/>
+    </Grid>
+</Window>
